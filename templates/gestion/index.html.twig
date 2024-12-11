@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Albums{% endblock %}
+
+{% block body %}
+    <h1>Gestion des Albums</h1>
+
+    <a href="{{ path('app_gestion_add') }}" class="btn btn-primary">Ajouter un Album</a>
+
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Auteur</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for album in albums %}
+            <tr>
+                <td>{{ album.id }}</td>
+                <td>{{ album.nom }}</td>
+                <td>{{ album.auteur }}</td>
+                <td>{{ album.date|date('d/m/Y') }}</td>
+                <td>
+                    <a href="{{ path('app_gestion_edit', {id: album.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
