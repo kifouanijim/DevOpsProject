@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Musique{% endblock %}
+
+{% block body %}
+    <h1>Musique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ musique.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ musique.nom }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ musique.auteur }}</td>
+            </tr>
+            <tr>
+                <th>DateDeSortie</th>
+                <td>{{ musique.dateDeSortie ? musique.dateDeSortie|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Album</th>
+                <td>{{ musique.album }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_musique_index') }}">back to list</a>
+
+    <a href="{{ path('app_musique_edit', {'id': musique.id}) }}">edit</a>
+
+    {{ include('musique/_delete_form.html.twig') }}
+{% endblock %}
